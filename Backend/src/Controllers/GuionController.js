@@ -13,6 +13,20 @@ class GuionController {
         }
     } 
 
+    async findGuionById(req, res) {
+        try {
+            const guionId = req.params.id;
+            const guion = await guionService.findGuionById(guionId);
+            if (!guion) {
+                res.status(404).json({ error: 'Guion no encontrado' });
+            } else {
+                res.status(200).json(guion);
+            }
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    }
+
     async findAllGuiones(req, res) {
         try{
             const guiones = await guionService.findAll(req.body);
@@ -22,6 +36,26 @@ class GuionController {
             res.status(400).json({error: error.message});
         }
     } 
+
+    async updateGuion(req, res) {
+        try {
+            const guionId = req.params.id;
+            const guion = await guionService.updateGuion(guionId, req.body);
+            res.status(200).json(guion);
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    }
+
+    async deleteGuion(req, res) {
+        try {
+            const guionId = req.params.id;
+            await guionService.deleteGuion(guionId);
+            res.status(204).send();
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    }
 
 }
 
