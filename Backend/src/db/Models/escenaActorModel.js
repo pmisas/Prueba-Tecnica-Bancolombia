@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../Config/config');
 const Actor = require('./actorModel');
+const Escena = require('./escenaModel');
 
 class EscenaActor extends Model {}
 EscenaActor.init({
@@ -26,9 +27,12 @@ EscenaActor.init({
 });
 
 
-EscenaActor.belongsTo(Escena, { onDelete: 'CASCADE' });
-
-EscenaActor.belongsTo(Actor, { onDelete: 'CASCADE' });
+EscenaActor.belongsTo(Escena, {
+    onDelete: 'CASCADE'
+});
+EscenaActor.belongsTo(Actor, {
+    onDelete: 'CASCADE'
+});
 
 
 module.exports = EscenaActor;

@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const UbicacionActorController = require('../Controllers/UbicacionController');
+const UbicacionActorController = require('../../Controllers/UbicacionController');
+const authenticate = require('../../Config/middleware/autheticate');
 
-router.post('/', UbicacionActorController.createUbicacionActor);
 router.get('/:id', UbicacionActorController.findUbicacionActorById);
 router.get('/', UbicacionActorController.findAllUbicacionActores);
+router.post('/', UbicacionActorController.createUbicacionActor);
 router.put('/:id', UbicacionActorController.updateUbicacionActor);
 router.delete('/:id', UbicacionActorController.deleteUbicacionActor);
 

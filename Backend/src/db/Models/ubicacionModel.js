@@ -33,7 +33,7 @@ UbicacionActor.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Actor, 
+            model: Escena, 
             key: 'id' 
         }
     },
@@ -41,18 +41,26 @@ UbicacionActor.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Escena, 
+            model: Actor, 
             key: 'id' 
         }
+    },
+    orden: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 }, {
     sequelize,
     modelName: 'UbicacionActor'
 });
 
-/*
-UbicacionActor.belongsTo(Escena);
-UbicacionActor.belongsTo(Actor);
-*/
+
+UbicacionActor.belongsTo(Escena, {
+    onDelete: 'CASCADE'
+});
+UbicacionActor.belongsTo(Actor, {
+    onDelete: 'CASCADE'
+});
+
 
 module.exports = UbicacionActor;

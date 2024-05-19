@@ -1,15 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const authRoutes = require('./routes/userRoutes');
-const guionRoutes = require('./routes/guionRoutes');
-const actorRoutes = require('./routes/actorRouter');
-const escenaRoutes = require('./routes/escenaRouter');
-const dialogoRoutes = require('./routes/dialogoRouter');
-const ubicacionRoutes = require('./routes/ubicacionRouter');
-const poseRoutes = require('./routes/poseRouter');
+
+const authRoutes = require('./routes/rut/userRoutes');
+const guionRoutes = require('./routes/rut/guionRoutes');
+const actorRoutes = require('./routes/rut/actorRouter');
+const escenaRoutes = require('./routes/rut/escenaRouter');
+const dialogoRoutes = require('./routes/rut/dialogoRouter');
+const ubicacionRoutes = require('./routes/rut/ubicacionRouter');
+const poseRoutes = require('./routes/rut/poseRouter');
+const escenaActorRoute = require('./routes/rut/escenaActorRoute');
+
 const sequelize = require('./Config/config');
-const User = require('./db/Models/userModel');
+const { authenticateToken, authorizeRole } = require('./Config/middleware/autheticate');
 
 dotenv.config();
 const app = express();
@@ -30,12 +33,13 @@ sequelize.sync()
     .catch(err => console.error('Error syncing database:', err));
 
 app.use('/auth', authRoutes);
-app.use('/guion', guionRoutes);
-app.use('/actor', actorRoutes);
-app.use('/escena', escenaRoutes);
-app.use('/ubicacion', ubicacionRoutes);
-app.use('/dialogo', dialogoRoutes);
-app.use('/pose', poseRoutes);
+app.use('/guion', authenticateToken, guionRoutes);
+app.use('/actor', authenticateToken, actorRoutes);
+app.use('/escena', authenticateToken, escenaRoutes);
+app.use('/ubicacion', authenticateToken, ubicacionRoutes);
+app.use('/dialogo', authenticateToken, dialogoRoutes);
+app.use('/pose', authenticateToken, poseRoutes);
+app.use('/escena-actor', authenticateToken, escenaActorRoute);
 
 app.get('/', (req, res) => {
     res.send('Backend en NodeJS Express - Postgres');

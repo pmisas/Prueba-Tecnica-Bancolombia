@@ -8,13 +8,39 @@ PoseActor.init({
     pose: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    EscenaId: { 
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Escena, 
+            key: 'id' 
+        }
+    },
+    ActorId: { 
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Actor, 
+            key: 'id' 
+        }
+    },
+    orden: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 }, {
     sequelize,
     modelName: 'PoseActor'
 });
 
-PoseActor.belongsTo(Escena);
-PoseActor.belongsTo(Actor);
+
+PoseActor.belongsTo(Escena, {
+    onDelete: 'CASCADE'
+});
+PoseActor.belongsTo(Actor, {
+    onDelete: 'CASCADE'
+});
+
 
 module.exports = PoseActor;

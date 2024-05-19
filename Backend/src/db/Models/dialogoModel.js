@@ -8,7 +8,28 @@ Dialogo.init({
     texto: {
         type: DataTypes.TEXT,
         allowNull: false
-    }
+    },
+    EscenaId: { 
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Escena, 
+            key: 'id' 
+        }
+    },
+    ActorId: { 
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Actor, 
+            key: 'id' 
+        }
+    },
+    orden: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    
 }, {
     sequelize,
     modelName: 'Dialogo'

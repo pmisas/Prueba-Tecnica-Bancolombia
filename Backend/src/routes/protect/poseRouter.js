@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const PoseActorController = require('../Controllers/PoseController');
+const PoseActorController = require('../../Controllers/PoseController');
+const authenticate = require('../../Config/middleware/autheticate');
 
 router.post('/', PoseActorController.createPoseActor);
-router.get('/:id', PoseActorController.findPoseActorById);
-router.get('/', PoseActorController.findAllPoseActores);
 router.put('/:id', PoseActorController.updatePoseActor);
 router.delete('/:id', PoseActorController.deletePoseActor);
 

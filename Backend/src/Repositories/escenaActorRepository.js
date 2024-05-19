@@ -1,33 +1,39 @@
 const EscenaActor = require('../db/Models/escenaActorModel');
 
 class EscenaActorRepository {
-    async createEscena(data) {
-        return await Escena.create(data);
+    
+    async createEscenaActor(data) {
+        return await EscenaActor.create(data);
     }
 
-    async findEscenaById(id) {
-        return await Escena.findByPk(id);
+    async findEscenaActorById(id) {
+        return await EscenaActor.findByPk(id);
     }
 
-    async findAllEscenas() {
-        return await Escena.findAll();
+    async findEscenaActoresByEscenaId(escenaId) {
+        return await EscenaActor.findAll({ where: { EscenaId: escenaId } });
     }
 
-    async updateEscena(id, data) {
-        const escena = await encontrarEscenaPorId(id);
-        if (!escena) throw new Error('Escena no encontrada');
-        return await escena.update(data);
+    async findEscenaActoresByActorId(actorId) {
+        return await EscenaActor.findAll({ where: { ActorId: actorId } });
     }
 
-    async deleteEscena(id) {
-        const escena = await encontrarEscenaPorId(id);
-        if (!escena) throw new Error('Escena no encontrada');
-        return await escena.destroy();
+    async findAllEscenaActores() {
+        return await EscenaActor.findAll();
     }
 
-    async findEscenasByGuionId(guionId) {
-        return await escenaRepository.findEscenasByGuionId(guionId);
+    async updateEscenaActor(id, data) {
+        const escenaActor = await this.findEscenaActorById(id);
+        if (!escenaActor) throw new Error('EscenaActor no encontrado');
+        return await escenaActor.update(data);
     }
+
+    async deleteEscenaActor(id) {
+        const escenaActor = await this.findEscenaActorById(id);
+        if (!escenaActor) throw new Error('EscenaActor no encontrado');
+        return await escenaActor.destroy();
+    }
+
 }
 
-module.exports = EscenaRepository;
+module.exports = EscenaActorRepository;

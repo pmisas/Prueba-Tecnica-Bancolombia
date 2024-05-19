@@ -3,9 +3,9 @@ const sequelize = require('../../Config/config');
 const Guion = require('./guionModel');
 const Actor = require('./actorModel');
 
-class Escena extends Model {}
-Escena.init({
-    nombre: {
+class Orden extends Model {}
+Orden.init({
+    Escena: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -20,11 +20,7 @@ Escena.init({
             model: Guion, 
             key: 'id' 
         }
-    },
-    orden: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
+    }
 }, {
     sequelize,
     modelName: 'Escena'
