@@ -4,11 +4,9 @@ const EscenaController = require('../../Controllers/EscenaController');
 const authenticate = require('../../Config/middleware/autheticate');
 const logOperation = require('../../Config/middleware/audit'); 
 
-router.use(logOperation('Escena'));
 
-
-router.post('/', EscenaController.createEscena);
-router.put('/:id', EscenaController.updateEscena);
-router.delete('/:id', EscenaController.deleteEscena);
+router.post('/',logOperation('Escena'), EscenaController.createEscena);
+router.put('/:id',logOperation('Escena'), EscenaController.updateEscena);
+router.delete('/:id',logOperation('Escena'), EscenaController.deleteEscena);
 
 module.exports = router;

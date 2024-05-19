@@ -11,6 +11,10 @@ const ubicacionService = new UbicacionService();
 const PoseService = require('../../Services/PoseService');
 const poseService = new PoseService();
 
+
+const AccionService = require('../../Services/AccionService');
+const accionService = new AccionService();
+
 function logOperation(tableName) {
   return async (req, res, next) => {
     const method = req.method; 
@@ -19,7 +23,7 @@ function logOperation(tableName) {
 
     let scriptId2 = null;
 
-    if (['Dialogo', 'Ubicacion', 'Pose'].includes(tableName)) {
+    if (['Dialogo', 'Ubicacion', 'Pose', 'Accion'].includes(tableName)) {
       let escenaId = req.body.EscenaId;
 
       
@@ -27,13 +31,14 @@ function logOperation(tableName) {
         const id = req.params.id; 
         let item;
 
-
         if (tableName === 'Dialogo') {
           item = await dialogoService.findDialogoById(id);
         } else if (tableName === 'Ubicacion') {
           item = await ubicacionService.findUbicacionActorById(id);
         } else if (tableName === 'Pose') {
           item = await poseService.findPoseActorById(id);
+        } else if (tableName === 'Accion') {
+          item = await accionService.findAccionById(id);
         }
 
         if (item) {

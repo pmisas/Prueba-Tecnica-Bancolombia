@@ -15,7 +15,11 @@ Accion.init({
             model: Escena, 
             key: 'id'
         }
-    }
+    },
+    orden: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
 }, {
     sequelize,
     modelName: 'Accion'
