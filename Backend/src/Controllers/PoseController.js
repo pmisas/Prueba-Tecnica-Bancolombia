@@ -48,7 +48,8 @@ class PoseActorController {
     async deletePoseActor(req, res) {
         try {
             const poseActorId = req.params.id;
-            await this.poseActorService.deletePoseActor(poseActorId);
+            console.log("CONTROLLLLER",poseActorId)
+            await poseActorService.deletePoseActor(poseActorId);
             res.status(204).send();
         } catch (error) {
             res.status(400).json({ error: error.message });

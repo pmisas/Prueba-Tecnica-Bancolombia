@@ -16,7 +16,7 @@ class UserService {
       const isValidPassword = await bcrypt.compare(password, user.password);
       if (!isValidPassword) throw new Error('Contraseña incorrecta');
   
-      const token = jwt.sign({ userId: user.id, role: user.rol }, process.env.JWT_SECRET, { expiresIn: '1d' });
+      const token = jwt.sign({ userId: user.id, role: user.rol, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1d' });
       return token;
   }
 }

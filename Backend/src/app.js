@@ -2,17 +2,13 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-const authRoutes = require('./routes/rut/userRoutes');
-const guionRoutes = require('./routes/rut/guionRoutes');
-const actorRoutes = require('./routes/rut/actorRouter');
-const escenaRoutes = require('./routes/rut/escenaRouter');
-const dialogoRoutes = require('./routes/rut/dialogoRouter');
-const ubicacionRoutes = require('./routes/rut/ubicacionRouter');
-const poseRoutes = require('./routes/rut/poseRouter');
-const escenaActorRoute = require('./routes/rut/escenaActorRoute');
+const authRoutes = require('./routes/auth/userRoutes');
+const protectRoutes = require('./routes/protect');
+const publicRoutes = require('./routes/public');
 
 const sequelize = require('./Config/config');
-const { authenticateToken, authorizeRole } = require('./Config/middleware/autheticate');
+const { authenticateToken } = require('./Config/middleware/autheticate');
+const logOperation = require('./Config/middleware/audit');
 
 dotenv.config();
 const app = express();
@@ -33,13 +29,8 @@ sequelize.sync()
     .catch(err => console.error('Error syncing database:', err));
 
 app.use('/auth', authRoutes);
-app.use('/guion', authenticateToken, guionRoutes);
-app.use('/actor', authenticateToken, actorRoutes);
-app.use('/escena', authenticateToken, escenaRoutes);
-app.use('/ubicacion', authenticateToken, ubicacionRoutes);
-app.use('/dialogo', authenticateToken, dialogoRoutes);
-app.use('/pose', authenticateToken, poseRoutes);
-app.use('/escena-actor', authenticateToken, escenaActorRoute);
+app.use('/protect', protectRoutes);
+app.use('/', publicRoutes);
 
 app.get('/', (req, res) => {
     res.send('Backend en NodeJS Express - Postgres');

@@ -24,10 +24,13 @@ function authenticateToken(req, res, next) {
 
 function authorizeRole(role) {
   return (req, res, next) => {
-    if (req.user.role !== role) {
-      return res.sendStatus(403);
-    }
-    next(); 
+      if (!req.user) {
+          return res.sendStatus(401); // Unauthorized
+      }
+      if (req.user.role !== role) {
+          return res.sendStatus(403); // Forbidden
+      }
+      next(); // El usuario tiene el rol adecuado, continuar con el siguiente middleware
   }
 }
 

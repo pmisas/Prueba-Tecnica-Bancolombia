@@ -14,13 +14,13 @@ class DialogoRepository {
     }
 
     async updateDialogo(id, data) {
-        const dialogo = await findDialogoById(id);
+        const dialogo = await this.findDialogoById(id);
         if (!dialogo) throw new Error('Dialogo no encontrado');
         return await dialogo.update(data);
     }
 
     async deleteDialogo(id) {
-        const dialogo = await findDialogoById(id);
+        const dialogo = await this.findDialogoById(id);
         if (!dialogo) throw new Error('Dialogo no encontrado');
         return await dialogo.destroy();
     }

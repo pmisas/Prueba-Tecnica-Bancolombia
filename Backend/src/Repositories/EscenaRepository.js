@@ -14,20 +14,17 @@ class EscenaRepository {
     }
 
     async updateEscena(id, data) {
-        const escena = await encontrarEscenaPorId(id);
+        const escena = await this.findEscenaById(id);
         if (!escena) throw new Error('Escena no encontrada');
         return await escena.update(data);
     }
 
     async deleteEscena(id) {
-        const escena = await encontrarEscenaPorId(id);
+        const escena = await this.findEscenaById(id);
         if (!escena) throw new Error('Escena no encontrada');
         return await escena.destroy();
     }
 
-    async findEscenasByGuionId(guionId) {
-        return await escenaRepository.findEscenasByGuionId(guionId);
-    }
 }
 
 module.exports = EscenaRepository;

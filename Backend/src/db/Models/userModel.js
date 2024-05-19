@@ -16,7 +16,8 @@ username: {
     type: DataTypes.STRING,
     validate: {
         len: [5, 30] 
-    }
+    },
+    unique: true
 },
 password: {
     allowNull: false,

@@ -15,7 +15,7 @@
         }
 
         async updateGuion(id, data) {
-            const guion = await findGuionById(id);
+            const guion = await this.findGuionById(id);
             if (!guion) throw new Error('Guion no encontrado');
             return await guion.update(data);
         }

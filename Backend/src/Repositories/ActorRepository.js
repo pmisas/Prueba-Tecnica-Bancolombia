@@ -14,13 +14,13 @@ class ActorRepository {
     }
 
     async updateActor(id, data) {
-        const actor = await encontrarActorPorId(id);
+        const actor = await this.findActorById(id);
         if (!actor) throw new Error('Actor no encontrado');
         return await actor.update(data);
     }
 
     async deleteActor(id) {
-        const actor = await encontrarActorPorId(id);
+        const actor = await this.findActorById(id);
         if (!actor) throw new Error('Actor no encontrado');
         return await actor.destroy();
     }

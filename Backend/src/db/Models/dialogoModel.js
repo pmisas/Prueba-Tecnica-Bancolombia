@@ -17,6 +17,10 @@ Dialogo.init({
             key: 'id' 
         }
     },
+    emocion: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     ActorId: { 
         type: DataTypes.INTEGER,
         allowNull: false,

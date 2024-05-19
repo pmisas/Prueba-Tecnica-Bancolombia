@@ -14,13 +14,13 @@ class PoseActorRepository {
     }
 
     async updatePoseActor(id, data) {
-        const poseActor = await findPoseActorById(id);
+        const poseActor = await this.findPoseActorById(id);
         if (!poseActor) throw new Error('PoseActor no encontrado');
         return await poseActor.update(data);
     }
 
     async deletePoseActor(id) {
-        const poseActor = await findPoseActorById(id);
+        const poseActor = await this.findPoseActorById(id);
         if (!poseActor) throw new Error('PoseActor no encontrado');
         return await poseActor.destroy();
     }

@@ -1,6 +1,7 @@
 const UbicacionActor = require('../db/Models/ubicacionModel');
 
 class UbicacionActorRepository {
+
     async createUbicacionActor(data) {
         return await UbicacionActor.create(data);
     }
@@ -14,13 +15,13 @@ class UbicacionActorRepository {
     }
 
     async updateUbicacionActor(id, data) {
-        const ubicacionActor = await findUbicacionActorById(id);
+        const ubicacionActor = await this.findUbicacionActorById(id);
         if (!ubicacionActor) throw new Error('UbicacionActor no encontrado');
         return await ubicacionActor.update(data);
     }
 
     async deleteUbicacionActor(id) {
-        const ubicacionActor = await findUbicacionActorById(id);
+        const ubicacionActor = await this.findUbicacionActorById(id);
         if (!ubicacionActor) throw new Error('UbicacionActor no encontrado');
         return await ubicacionActor.destroy();
     }
