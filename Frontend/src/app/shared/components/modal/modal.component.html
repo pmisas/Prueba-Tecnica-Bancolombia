@@ -1,0 +1,54 @@
+
+<ng-container >
+    <div class="modalt">
+        <div class="modalt-content">
+            <div class="modalt-header">
+                <p class="name">Crea tu guion</p>
+                
+                <svg xnlns="https://www.w3.org/2000/svg" width="113.536" height="113.536" viewBox="0 0 103.536 103.536" (click)="this.hideModal()">
+                    <g id="Group_65" data_name="Group 65" transform="translate(-142.732 -214.732)">
+                        <line id="Line_7" data-name="Line 7" x2="100" y2="100" transform="translate(144.5 216.5)" fill="none" stroke="#000"
+                        stroke-width="5"/>
+                        <line id="Line_8" data-name="Line 8" y1="99" x2="99" transform="translate(144.5 216.5)" fill="none" stroke="#000"
+                        stroke-width="5"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="modalt-container">
+                <form [formGroup]="guionForm" (ngSubmit)="onSubmit()" class="form">
+                    <div class="input-group">
+                        <label for="titulo">Titulo *</label>
+                        <input type="text" id="titulo" formControlName="titulo">
+                        <div *ngIf="guionForm.controls['titulo'].invalid && (guionForm.controls['titulo'].touched || guionForm.controls['titulo'].dirty)">
+                            <p class="invalid" *ngIf="guionForm.controls['titulo'].errors?.['required']">Requerido</p>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="descripcion">Descripción *</label>
+                        <textarea id="descripcion" formControlName="descripcion" maxlength="140" rows="4" cols="50"></textarea>
+                        <div *ngIf="guionForm.controls['descripcion'].invalid && (guionForm.controls['descripcion'].touched || guionForm.controls['descripcion'].dirty)">
+                            <p class="invalid" *ngIf="guionForm.controls['descripcion'].errors?.['required']">Requerido</p>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="genero">Género de guion*</label>
+                        <select id="genero" formControlName="genero">
+                          <option value="">Seleccione un género</option>
+                          <option value="drama">Drama</option>
+                          <option value="comedia">Comedia</option>
+                          <option value="terror">Terror</option>
+                          <option value="cienciaFiccion">Ciencia Ficción</option>
+                        </select>
+                        <div *ngIf="guionForm.controls['genero'].invalid && (guionForm.controls['genero'].touched || guionForm.controls['genero'].dirty)">
+                          <p class="invalid" *ngIf="guionForm.controls['genero'].errors?.['required']">Requerido</p>
+                        </div>
+                    </div>
+                      
+                    
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-container>

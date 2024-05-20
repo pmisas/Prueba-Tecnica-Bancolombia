@@ -3,11 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IGuion } from '../../../shared/components/card/card.metadata';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../../shared/components/card/card.component';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, ModalComponent],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss']
 })
@@ -16,7 +17,10 @@ export class ViewComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   error: boolean = false;
 
-  private apiUrl = 'http://localhost:3000/guion'; // Reemplaza con la URL de tu API
+  showModal: boolean = false;
+
+
+  private apiUrl = 'http://localhost:3000/guion'; 
 
   constructor(private http: HttpClient) {}
 
@@ -43,7 +47,18 @@ export class ViewComponent implements OnInit, OnDestroy {
     );
   }
 
+  onEmptyCardClicked(): void {
+    console.log("evento emitido")
+    this.showModal = true;
+  }
+
+  // view.component.ts
+  onModalClose(): void {
+    this.showModal = false;
+  }
+
+  
+
   ngOnDestroy(): void {
-    // Limpieza si es necesario
   }
 }
