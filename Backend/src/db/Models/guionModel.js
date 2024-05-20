@@ -8,6 +8,13 @@ Guion.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    Descripcion: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [10, 130] 
+        },
+    },
     Genero: {
         type: DataTypes.STRING,
         allowNull: false

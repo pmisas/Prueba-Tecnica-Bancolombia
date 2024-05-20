@@ -1,12 +1,4 @@
-<!--
-<ng-container *ngIf="!zero">
-    <div class="container-fluid row" style="margin-top: 40px;">
-        <app-card-tasks [task]="task" [my]="this.user" *ngFor="let task of this.tasks" class="col-12 col-md-6 col-xl-6" ></app-card-tasks>
-    </div>
-</ng-container>
--->
 
-<!-- view.component.html -->
 <div *ngIf="loading">Cargando guiones...</div>
 <div *ngIf="error">Hubo un error al cargar los guiones.</div>
 <ul *ngIf="!loading && !error">

@@ -1,19 +1,16 @@
-
-<!---->
-<div class="container-fluid row" >
-    <div class="card" >
+<div class="container-fluid row">
+    <div class="card">
         <div class="card-body">
-            <p class="card-title" style="text-transform: capitalize; font-size: 30px;">{{guion?.Titulo}}</p>
+            <div class="titulo-genero">
+                <p class="card-title">{{ guion?.Titulo }}</p>
+                <p class="genero">{{ guion?.Genero }}</p>
+            </div>
+            <p class="descripcion">{{ guion?.Descripcion }}</p>
         </div>
         <div class="footer">
-            <div class="footer" style="display: flex;">
-                <i class="fa-regular fa-clock text-danger"></i>
-                <h6 class="genero" >{{guion?.Genero}} </h6>
-            </div>
-            <div class="botones" style="display: flex;">
-                <button >editarse</button>
+            <div class="botones">
+                <button class="btn-editar">editar</button>
             </div>
         </div>
-        
     </div>
 </div>
