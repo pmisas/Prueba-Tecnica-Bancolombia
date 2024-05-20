@@ -1,0 +1,151 @@
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  position: relative; 
+}
+
+.register-box {
+  background-color: #161b22;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  width: 400px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: #c9d1d9;
+  font-family: "Inter";
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #c9d1d9;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #c9d1d9;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 2rem);
+  padding: 0.5rem;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+input::placeholder {
+  color: #8b949e;
+}
+
+button.btn {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #238636;
+  color: white;
+  cursor: pointer;
+}
+
+button.btn:hover {
+  background-color: #2ea043;
+}
+
+.signin-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.signin-link a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
+}
+
+.role-error {
+  color: #ff4d4f;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+
+.checkbox-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkbox-container label {
+  padding-top: 12px;
+}
+
+.custom-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-radio input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #30363d;
+  border-radius: 50%;
+  outline: none;
+  margin-right: 0.5rem;
+  background-color: #0d1117;
+  position: relative;
+}
+
+.custom-radio input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #238636;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.custom-radio label {
+  color: #c9d1d9;
+  font-family: "Inter";
+}
+
+.invalid{
+  color:#8b949e;
+  font-size: small;
+  padding-left: 5px;
+}
+
+.error-message {
+  color:#8b949e;
+  font-size: small;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}

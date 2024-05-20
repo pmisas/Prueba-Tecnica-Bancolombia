@@ -1,0 +1,40 @@
+<div class="login-container">
+    <div class="header">
+        <i class="fa-solid fa-book-open"></i>
+        <h1>Sign in to GitHub</h1>
+    </div>
+    <div class="login-box">
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div class="form-group">
+          <label for="username">Escribe tu usuario*</label>
+          <input type="text" id="username" formControlName="username" placeholder="username">
+          <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].touched || loginForm.controls['username'].dirty)">
+            <p class="invalid" *ngIf="loginForm.controls['username'].errors?.['minlength']">Debe tener mínimo 5 caracteres</p>
+            <p class="invalid" *ngIf="loginForm.controls['username'].errors?.['maxlength']">Debe tener máximo 30 caracteres</p>
+            <p class="invalid" *ngIf="loginForm.controls['username'].errors?.['required']">Requerido</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Escribe tu contraseña*</label>
+          <input type="password" formControlName="password" id="password" placeholder="*****">
+          <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)">
+            <p class="invalid" *ngIf="loginForm.controls['password'].errors?.['required']">Requerido</p>
+          </div>
+        </div>
+        <button type="submit" class="btn">Sign in</button>
+        <div class="form-footer">
+          <a href="#">Forgot password?</a>
+        </div>
+      </form>
+      <div class="alternative-login">
+        
+      </div>
+    </div>
+    <div class="create-account">
+        <p id="create">New to GitHub? <a id="link" [routerLink]="['/auth/register']">Create an account</a></p>
+    </div>
+  </div>
+
+  
