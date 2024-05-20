@@ -1,11 +1,11 @@
 <div class="register-container">
-    <h1>Welcome to GitHub!</h1>
+    <h1>Registrate en CineScribe</h1>
     <div class="register-box">
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
         <div class="form-group">
-          <label for="username">Escribe un usuario*</label>
-          <input type="text" id="username" formControlName="username" placeholder="username" required>
+          <label for="username">Escribe un usuario *</label>
+          <input type="text" id="username" formControlName="username" required>
           <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].touched || registerForm.controls['username'].dirty)">
             <p class="invalid" *ngIf="registerForm.controls['username'].errors?.['minlength']">Debe tener mínimo 5 caracteres</p>
             <p class="invalid" *ngIf="registerForm.controls['username'].errors?.['maxlength']">Debe tener máximo 30 caracteres</p>
@@ -13,20 +13,20 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Crea una contraseña*</label>
-          <input type="password" id="password" formControlName="password" placeholder="*****">
+          <label for="password">Crea una contraseña *</label>
+          <input type="password" id="password" formControlName="password">
           <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty)">
             <p class="invalid" *ngIf="registerForm.controls['password'].errors?.['required']">Requerido</p>
           </div>
         </div>
         <div class="form-group">
-          <label>Select your role*</label>
+          <label>Elige tu rol *</label>
           <div class="checkbox-container">
-            <ejs-radiobutton label="actor" name="role" formControlName="role" [value]="'usuario'" cssClass="custom-radio"></ejs-radiobutton>
-            <ejs-radiobutton label="guionista" name="role" formControlName="role" [value]="'guionista'" cssClass="custom-radio"></ejs-radiobutton>
+            <ejs-radiobutton label="Actor" name="role" formControlName="role" [value]="'usuario'" cssClass="custom-radio"></ejs-radiobutton>
+            <ejs-radiobutton label="Guionista" name="role" formControlName="role" [value]="'guionista'" cssClass="custom-radio"></ejs-radiobutton>
           </div>
         </div>
-        <button type="submit" class="btn">Continue</button>
+        <button type="submit" class="btn">Registrar</button>
       </form>
     </div>
     <div class="signin-link">

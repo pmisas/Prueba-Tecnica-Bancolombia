@@ -11,7 +11,7 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: () => import ('./modules/user/user.routes').then(m => m.USER_ROUTES)
+                loadChildren: () => import ('./modules/dashboard/dashboard.routes').then(m => m.USER_ROUTES)
 
             },
             {
@@ -24,7 +24,8 @@ export const routes: Routes = [
 
 /*
 http://localhost:4200/auth/login
-http://localhost:4200/dashboard/view
+http://localhost:4200/auth/register
+http://localhost:4200/dashboard/
 http://localhost:4200/dashboard/1
 http://localhost:4200/dashboard/editor/1
 */

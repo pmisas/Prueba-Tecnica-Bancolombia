@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserLayoutComponent } from './user-layout.component';
+import { GuionComponent } from './guion.component';
 
-describe('UserLayoutComponent', () => {
-  let component: UserLayoutComponent;
-  let fixture: ComponentFixture<UserLayoutComponent>;
+describe('GuionComponent', () => {
+  let component: GuionComponent;
+  let fixture: ComponentFixture<GuionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserLayoutComponent]
+      imports: [GuionComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(UserLayoutComponent);
+    fixture = TestBed.createComponent(GuionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

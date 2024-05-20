@@ -1,0 +1,67 @@
+.card{
+    max-width: 400px;
+    min-width: 240px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.15);
+    border-bottom: 3px solid rgba(0,0,0,0.15);
+    min-height: 150px;
+    min-height: 245px;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+
+
+.card-body{
+    color: #c9d1d9;
+    font-weight: lighter;
+    padding-top: 0%;
+    align-content: center;
+}
+
+.footer{
+    position: relative;
+    font-weight: 300;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    background-color: #161b22;
+}
+.botones{
+    font-weight: 300;
+    left: auto;
+    margin-left: 10px;
+}
+
+.btn{
+    margin-right: 15px;
+    font-size: small;
+}
+
+i{
+    padding-top: 2.5px; 
+    padding-right: 5px ;
+    font-size: 13px; 
+    margin-top: -10px;  
+}
+
+h6{
+    font-size: 13px; 
+    font-weight:bold;
+    margin-top: -10px;
+}
+
+.card-title{
+    align-self: auto;
+}
+
+.genero {
+    color: #c9d1d9;
+}
+
+h4{
+    text-transform:capitalize;
+}
+.btn-colab{
+    max-width: 117.7px;
+}
