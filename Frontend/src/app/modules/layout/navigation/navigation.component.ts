@@ -65,4 +65,19 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  
+  updateSidebarClass() {
+    const sidebarElement = this.document.querySelector('.sidebar');
+    if (this.expand) {
+      sidebarElement!.classList.add('expanded');
+    } else {
+      sidebarElement!.classList.remove('expanded');
+    }
+  }
+  
+  toggleOverlaySidebar() {
+    this.expand = !this.expand; // Cambia el estado de expansión
+  }
+  
+  
 }

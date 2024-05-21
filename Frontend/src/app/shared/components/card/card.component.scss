@@ -1,18 +1,18 @@
 .card {
-    max-width: 400px;
-    min-width: 240px;
-    height: auto; 
-    min-height: 250px;
+    max-width: 320px;
+    min-width: 192px;
+    height: 280px; 
+    min-height: 200px;
     border-radius: 8px;
     box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.15);
     border-bottom: 3px solid rgba(0,0,0,0.15);
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     background-color: #161b22;
     color: #c9d1d9;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 16px;
     justify-content: space-between;
 }
 
@@ -29,20 +29,21 @@
 
 
 .card-title{
-    font-size: 24px;
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .genero {
-    font-size: 16px;
+    font-size: 12.8px;
     color: #c9d1d9;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .descripcion {
     flex-grow: 1; 
     display: flex;
+    font-size: smaller;
 }
 
 .footer {
@@ -56,8 +57,8 @@
   
 
 .btn-editar {
-    padding: 80px 56px;
-    font-size: 16px;
+    padding: 64px 44.8px;
+    font-size: 12.8px;
     color: white;
     background-color: #238636; 
     border: none;
@@ -70,8 +71,8 @@
 }
 
 .btn-eliminar {
-    padding: 8px 56px;
-    font-size: 16px;
+    padding: 6.5px 4.8px;
+    font-size: 12.8px;
     color: white;
     background-color: #9c0f0f; 
     border: none;
@@ -91,32 +92,33 @@
     height: 100%; 
     color: #c9d1d959; 
     opacity: 0.85;
-    font-size: 24px; 
-    padding: 20px; 
+    font-size: 19px; 
+    padding: 16px; 
     box-sizing: border-box; 
+    min-height: 200px;
 }
 
 .nueva-tarjeta-titulo {
-    margin-bottom: 10px; 
-    font-size: 30px; 
-    font-weight: bold;
+    margin-bottom: 8px; 
+    font-size: 24px; 
+    font-weight:normal;
 }
 
 .nueva-tarjeta-icono {
     font-size: 48px; 
-    font-weight: bold;
+    font-weight: normal;
     color: #c9d1d9; 
 }
 
 .btn-editar, .btn-eliminar {
-    padding: 8px 16px;
-    font-size: 16px;
+    padding: 6.4px 12.8px;
+    font-size: 12.8px;
     color: white;
     background-color: #238636; 
     border: none;
     cursor: pointer;
-    border-radius: 5px;
-    margin-right: 10px;  /* Agrega un margen a la derecha del botón editar */
+    border-radius: 4px;
+    margin-right: 8px;  /* Agrega un margen a la derecha del botón editar */
 }
 
 .btn-editar:hover {
@@ -124,8 +126,8 @@
 }
 
 .btn-eliminar {
-    padding: 8px 16px;
-    font-size: 16px;
+    padding: 6.4px 12.8px;
+    font-size: 12.8px;
     color: white;
     background-color: #881414; 
     border: none;
@@ -138,9 +140,9 @@
 }
 
 .btn-eliminar, .btn-editar {
-    padding: 8px 45px;
+    padding: 6.4px 36px;
 }
 
 .footer > :first-child {
-    margin-right: 25px;
+    margin-right: 20px;
 }
