@@ -28,6 +28,8 @@
                         <textarea id="descripcion" formControlName="descripcion" maxlength="140" rows="4" cols="50"></textarea>
                         <div *ngIf="guionForm.controls['descripcion'].invalid && (guionForm.controls['descripcion'].touched || guionForm.controls['descripcion'].dirty)">
                             <p class="invalid" *ngIf="guionForm.controls['descripcion'].errors?.['required']">Requerido</p>
+                            <p class="invalid" *ngIf="guionForm.controls['descripcion'].errors?.['maxlength']">Debe tener maximo 130 caracteres</p>
+                            <p class="invalid" *ngIf="guionForm.controls['descripcion'].errors?.['minlength']">Debe tener minimo 10 caracteres</p>
                         </div>
                     </div>
 

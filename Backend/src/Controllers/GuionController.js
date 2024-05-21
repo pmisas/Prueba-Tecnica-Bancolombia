@@ -4,12 +4,16 @@ const guionService = new GuionService();
 class GuionController {
 
     async createGuion(req, res) {
-        try{
-            const guion = await guionService.create(req.body);
+        try {
+            const guionistaId = req.user.userId; 
+            const guionData = {
+                ...req.body,
+                GuionistaId: guionistaId
+            };
+            const guion = await guionService.create(guionData);
             res.status(201).json(guion);
-        }
-        catch(error){
-            res.status(400).json({error: error.message});
+        } catch (error) {
+            res.status(400).json({ error: error.message });
         }
     } 
 
@@ -52,6 +56,21 @@ class GuionController {
             const guionId = req.params.id;
             await guionService.deleteGuion(guionId);
             res.status(204).send();
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    }
+
+    async findAllGuionesByGuionista(req, res) {
+        try {
+            const guionistaId = req.user.userId;
+            console.log(req.body)
+            const guionData = {
+                ...req.body,
+                GuionistaId: guionistaId
+            };
+            const guiones = await guionService.findAllByGuionistaId(guionistaId);
+            res.status(200).json(guiones);
         } catch (error) {
             res.status(400).json({ error: error.message });
         }

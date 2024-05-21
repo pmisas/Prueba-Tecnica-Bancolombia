@@ -1,12 +1,12 @@
 <div class="container-fluid row">
+  <app-card (emptyCardClicked)="onEmptyCardClicked()" style="cursor: pointer;" class="col-12 col-md-6 col-xl-4"></app-card>
   <ng-container *ngFor="let guion of guiones; let i = index">
-    <!-- Mostrar la tarjeta vacía solo en la primera iteración -->
-    <app-card *ngIf="i === 0" (emptyCardClicked)="onEmptyCardClicked()" style="cursor: pointer;" class="col-12 col-md-6 col-xl-4"></app-card>
-    <!-- Mostrar todas las tarjetas de guiones empezando desde la primera -->
     <app-card *ngIf="i >= 0" [guion]="guion" class="col-12 col-md-6 col-xl-4"></app-card>
   </ng-container>
 </div>
 
+
 <app-modal *ngIf="showModal"></app-modal>
-<app-modal *ngIf="showModal" (close)="onModalClose()"></app-modal>
+<app-modal *ngIf="showModal" (close)="onModalClose()" [token]="myToken" (guionCreated)="handleGuionCreated($event)"></app-modal>
+
 

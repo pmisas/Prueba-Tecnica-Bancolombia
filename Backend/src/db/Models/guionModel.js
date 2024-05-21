@@ -21,7 +21,7 @@ Guion.init({
     },
     GuionistaId: { 
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Usuario, 
             key: 'id' 

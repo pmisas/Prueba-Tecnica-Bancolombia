@@ -26,6 +26,14 @@
             return await guion.destroy();
         }
 
+        async findAllGuionByGuionistaId(guionistaId) {
+            return await Guion.findAll({
+                where: {
+                    GuionistaId: guionistaId
+                }
+            });
+        }
+
     }
 
     module.exports = GuionRepository;

@@ -2,6 +2,6 @@ export interface IGuion{
     id:number;
     Titulo:string;
     Descripcion: string;
-    Genero: boolean,
+    Genero: string,
     GuionistaId: string;
 }

@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SkeletonComponent } from './modules/layout/skeleton/skeleton.component';
+import { AuthGuard } from './core/guards/auth-guards';
+import { LoginRedirectGuard } from './core/guards/loguinRedirect-guard';
 
 
 export const routes: Routes = [
-    {path: 'auth', 
+    {path: 'auth', canActivate: [LoginRedirectGuard],
         loadChildren: () => import ('./modules/auth/auth.routes').then(m => m.AUTH_ROUTES)
     },
-    {path: 'dashboard', component: SkeletonComponent,
+    {path: 'dashboard', component: SkeletonComponent, canActivate: [AuthGuard],
         children: [
             {
                 path: '',
@@ -19,6 +21,11 @@ export const routes: Routes = [
                 loadChildren: () => import ('./modules/editor/editor.routes').then(m => m.EDITOR_ROUTES)
             }
         ]
+    },
+    {
+        path: '**', 
+        redirectTo: '/dashboard', 
+        pathMatch: 'full'
     }
 ];
 

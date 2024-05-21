@@ -15,7 +15,7 @@ Escena.init({
     },
     GuionId: { 
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Guion, 
             key: 'id' 
