@@ -8,6 +8,7 @@
       <p class="descripcion">{{ guion?.Descripcion }}</p>
       <div class="footer">
         <!--<button class="btn-editar" (click)="$event.stopPropagation();">editar</button>-->
+        <button class="btn-editar" (click)="onEditClicked(); $event.stopPropagation();">editar</button>
         <button class="btn-eliminar" (click)="onDeleteClicked(); $event.stopPropagation();">eliminar</button>
       </div>
     </ng-container>

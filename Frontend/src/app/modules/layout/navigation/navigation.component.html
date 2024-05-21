@@ -1,7 +1,10 @@
 <nav class="navbar">
-    <div class="nav-container">
-      <a href="/" class="nav-logo"><i class="fa-solid fa-book-open"></i></a>
-      <button class="logout-button" (click)=logOut()>Cerrar sesión</button>
-    </div>
+  <div *ngIf="showSidebar" class="sidebar" [style.width]="expand ? '300px' : '80px'">
+
+  </div>
+  <div class="nav-container">
+    <i *ngIf="showSidebar"  style="color: #c9d1d9;" class="fa-solid fa-bars" (click)="toggleSidebar()"></i>
+    <a href="/" class="nav-logo"></a>
+    <button class="logout-button" (click)="logOut()">Cerrar sesión</button>
+  </div>
 </nav>
-  
