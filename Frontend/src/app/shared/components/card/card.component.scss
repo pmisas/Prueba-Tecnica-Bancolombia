@@ -56,7 +56,7 @@
   
 
 .btn-editar {
-    padding: 8px 16px;
+    padding: 80px 56px;
     font-size: 16px;
     color: white;
     background-color: #238636; 
@@ -70,7 +70,7 @@
 }
 
 .btn-eliminar {
-    padding: 8px 16px;
+    padding: 8px 56px;
     font-size: 16px;
     color: white;
     background-color: #9c0f0f; 
@@ -108,3 +108,39 @@
     color: #c9d1d9; 
 }
 
+.btn-editar, .btn-eliminar {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #238636; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;  /* Agrega un margen a la derecha del botón editar */
+}
+
+.btn-editar:hover {
+    background-color: #2ea043;
+}
+
+.btn-eliminar {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #881414; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-eliminar:hover {
+    background-color: #a01919; 
+}
+
+.btn-eliminar, .btn-editar {
+    padding: 8px 45px;
+}
+
+.footer > :first-child {
+    margin-right: 25px;
+}

@@ -60,6 +60,19 @@ export class ViewComponent implements OnInit, OnDestroy {
     }
   }
   
+  onDeleteCard(id: number): void {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.myToken}`
+    });
+    this.http.delete(`http://localhost:3000/protect/guion/${id}`, { headers }).subscribe({
+      next: () => {
+        this.guiones = this.guiones.filter(guion => guion.id !== id);
+      },
+      error: (error) => {
+        console.error('Error al eliminar el guión', error);
+      }
+    });
+  }
 
   handleGuionCreated(guion: IGuion): void {
     this.guiones.push(guion); // Añade el guion a la lista existente

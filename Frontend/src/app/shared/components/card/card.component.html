@@ -1,7 +1,5 @@
-<!-- app-card.component.html -->
-<div class="card" (click)="guion ? null : emptyCardClicked.emit()">
+<div class="card" style="cursor: pointer;" (click)="guion ? null : emptyCardClicked.emit()">
   <div class="card-body">
-    <!-- Verifica si guion tiene datos; si no, muestra un mensaje para crear tarjeta -->
     <ng-container *ngIf="guion?.Titulo; else crearTarjeta">
       <div class="titulo-genero">
         <p class="card-title">{{ guion?.Titulo }}</p>
@@ -9,10 +7,8 @@
       </div>
       <p class="descripcion">{{ guion?.Descripcion }}</p>
       <div class="footer">
-        <div class="botones">
-          <button class="btn-editar">editar</button>
-          <button class="btn-eliminar">eliminar</button>
-        </div>
+        <!--<button class="btn-editar" (click)="$event.stopPropagation();">editar</button>-->
+        <button class="btn-eliminar" (click)="onDeleteClicked(); $event.stopPropagation();">eliminar</button>
       </div>
     </ng-container>
     <ng-template #crearTarjeta>

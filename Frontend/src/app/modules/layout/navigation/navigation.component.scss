@@ -9,8 +9,7 @@
   }
   
   .nav-container {
-    width: 90%;
-    max-width: 1500px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,13 +23,14 @@
   }
   
   .logout-button {
-    padding: 16px 16px;
+    padding: 10px 16px;
+    margin-right: 3%;
     font-size: 18px;
     color: #c9d1d9;
     background-color: #238636; 
     border: 1px solid #ffffff1e; 
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 10px;
   }
   
   .logout-button:hover {
