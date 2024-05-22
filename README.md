@@ -23,3 +23,14 @@ Se proporciona un historial de cambios para cada guion.
         -PostgreSQL se utiliza para almacenar la información de los guiones, usuarios y otras entidades relevantes.
 ## Diseño de Interfaz Gráfica:
 Se ha diseñado una interfaz de usuario intuitiva y atractiva que permite a los usuarios navegar fácilmente por el sistema y realizar todas las funciones requeridas.
+
+##Imagen Login
+![login](./foto3.png)
+##Imagen Editor de guiones
+![login](./foto1.png)
+##Imagen Visualizador de guiones
+![login](./foto2.png)
+#Imagen creacion de guiones
+![login](./foto7.png)
+##Imagen del registro
+![login](./foto6.png)
