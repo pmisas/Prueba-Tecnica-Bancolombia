@@ -25,12 +25,12 @@ Se proporciona un historial de cambios para cada guion.
 Se ha diseñado una interfaz de usuario intuitiva y atractiva que permite a los usuarios navegar fácilmente por el sistema y realizar todas las funciones requeridas.
 
 ##Imagen Login
-![login](./foro3.png)
+![login](./foto3.png)
 ##Imagen Editor de guiones
-![login](./foto 1.png)
+![login](./foto1.png)
 ##Imagen Visualizador de guiones
 ![login](./foto2.png)
 #Imagen creacion de guiones
-![login](./foto 7.png)
+![login](./foto7.png)
 ##Imagen del registro
 ![login](./foto6.png)
