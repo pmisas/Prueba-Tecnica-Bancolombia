@@ -124,7 +124,7 @@
   height: calc(100vh - 60px); /* Altura total menos el navbar */
   background-color: #161b22; /* Un color de fondo distinto para diferenciar */
   z-index: 1100; /* Z-index mayor que la barra lateral original */
-  //display: none; /* Oculto por defecto */
+  //display: none; /* Oculto por duseEffect */
 }
 
 .overlay-sidebar.expanded {

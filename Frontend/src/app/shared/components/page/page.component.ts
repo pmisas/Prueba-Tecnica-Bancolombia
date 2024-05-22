@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './page.component.html',
-  styleUrl: './page.component.scss'
+  styleUrls: ['./page.component.scss']
 })
 export class PageComponent {
+  @Input()
+  pages: any[] = [];
 
 }

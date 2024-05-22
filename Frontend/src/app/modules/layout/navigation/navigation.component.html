@@ -1,36 +1,37 @@
 <nav class="navbar">
   <div *ngIf="showSidebar" class="sidebar" [style.width]="expand ? '200px' : '85px'">
     <div class="icons">
-      <div class="icon-container" *ngIf="expand">
+      <div class="icon-container" *ngIf="expand" (click)="sendSignal('Escena')">
         <img class="option" style="height: 27px;" src="assets/images/megafono.png">
         <span class="icon-title">Escena</span>
       </div>
-      <div class="icon-container" *ngIf="expand">
+      <div class="icon-container" *ngIf="expand" (click)="sendSignal('Actor')">
         <img class="option" style="height: 27px;" src="assets/images/actor.png">
         <span class="icon-title">Actor</span>
       </div>
-      <div class="icon-container" *ngIf="expand">
+      <div class="icon-container" *ngIf="expand" (click)="sendSignal('Dialogo')">
         <img class="option" style="height: 27px;" src="assets/images/burbuja-de-dialogo.png">
         <span class="icon-title">Diálogo</span>
       </div>
-      <div class="icon-container" *ngIf="expand">
+      <div class="icon-container" *ngIf="expand" (click)="sendSignal('Accion')">
         <img class="option" style="height: 29px;" src="assets/images/accion.png">
         <span class="icon-title">Accion</span>
       </div>
-      <div class="icon-container" *ngIf="expand">
+      <div class="icon-container" *ngIf="expand" (click)="sendSignal('Ubicacion')">
         <img class="option" style="height: 27px;" src="assets/images/marcador-de-posicion.png">
         <span class="icon-title">Ubicacion</span>
       </div>
-      <div class="icon-container" *ngIf="expand">
+      <div class="icon-container" *ngIf="expand" (click)="sendSignal('Pose')">
         <img class="option" style="height: 27px;" src="assets/images/sonrisa.png">
         <span class="icon-title">Pose</span>
       </div>
-      <img *ngIf="!expand" class="escena options" style="height: 27px;" src="assets/images/megafono.png">
-      <img *ngIf="!expand" class="actor options" style="height: 27px;" src="assets/images/actor.png">
-      <img *ngIf="!expand" class="dialogo options" style="height: 27px;" src="assets/images/burbuja-de-dialogo.png">
-      <img *ngIf="!expand" class="accion options" style="height: 29px;" src="assets/images/accion.png">
-      <img *ngIf="!expand" class="ubicacion options" style="height: 27px;" src="assets/images/marcador-de-posicion.png">
-      <img *ngIf="!expand" class="pose options" style="height: 27px;" src="assets/images/sonrisa.png">
+      <img *ngIf="!expand" class="escena options" style="height: 27px;" src="assets/images/megafono.png" (click)="sendSignal('Escena')">
+      <img *ngIf="!expand" class="actor options" style="height: 27px;" src="assets/images/actor.png" (click)="sendSignal('Actor')">
+      <img *ngIf="!expand" class="dialogo options" style="height: 27px;" src="assets/images/burbuja-de-dialogo.png" (click)="sendSignal('Dialogo')">
+      <img *ngIf="!expand" class="accion options" style="height: 29px;" src="assets/images/accion.png" (click)="sendSignal('Accion')">
+      <img *ngIf="!expand" class="ubicacion options" style="height: 27px;" src="assets/images/marcador-de-posicion.png" (click)="sendSignal('Posicion')">
+      <img *ngIf="!expand" class="pose options" style="height: 27px;" src="assets/images/sonrisa.png" (click)="sendSignal('Pose')">
+
     </div>
 
     

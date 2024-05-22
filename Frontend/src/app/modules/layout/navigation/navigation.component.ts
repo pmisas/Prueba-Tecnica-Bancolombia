@@ -2,6 +2,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
+import { CommunicationService } from '../../../core/services/comunicacion/comunnication.service';
 
 
 @Component({
@@ -16,15 +17,22 @@ export class NavigationComponent implements OnInit {
   showSidebar: boolean = false;
   expand: boolean = false;
 
+  opcion1=true
+  opcion2=false
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,
     private activatedRoute: ActivatedRoute,
+    private communicationService: CommunicationService
   ) {
     const localStorage = this.document.defaultView?.localStorage;
   }
 
+  sendSignal(message: string) {
+    this.communicationService.triggerTextbox(message);
+  }
 
   
   ngOnInit() {
