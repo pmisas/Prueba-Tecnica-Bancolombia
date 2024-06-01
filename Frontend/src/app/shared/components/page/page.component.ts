@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IOrderItem } from '../../../modules/editor/guion-component/order.metadata';
 
 @Component({
   selector: 'app-page',
@@ -10,7 +11,13 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent {
-  @Input()
-  pages: any[] = [];
 
+  @Input() textos: any[] = []
+
+  autoGrow(event: Event) {
+    const target = event.currentTarget as HTMLTextAreaElement;
+    target.style.height = 'auto';
+    target.style.height = target.scrollHeight + 'px';
+  }
+  
 }

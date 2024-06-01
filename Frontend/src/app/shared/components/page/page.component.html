@@ -1,4 +1,39 @@
 <div class="guiones-content">
-    <h1>holaaa</h1>
-    <a><i class="fa-solid fa-book-open"></i></a>
+    <div *ngFor="let item of textos">
+        <!--
+        <p>{{ item.order }} - {{ item.title }}</p>
+        -->
+
+        <ng-container [ngSwitch]="item.title">
+            <div class="escena-group">
+                <input class="escena-espacio"  *ngSwitchCase="'Escena'" placeholder="EXT/INT" [(ngModel)]="item.espacio" value="item.espacio">
+                <input class="escena-ubicacion" *ngSwitchCase="'Escena'" placeholder="UBICACION"  [(ngModel)]="item.ubicacion" value="item.ubicacion">
+                <input class="escena-momento" *ngSwitchCase="'Escena'" placeholder="MOMENTO DEL DIA" [(ngModel)]="item.momento" value="item.momento">
+
+            </div>
+
+            <input *ngSwitchCase="'Accion'" type="text"  [(ngModel)]="item.content" [value]="item.content" >
+
+            <div *ngSwitchCase="'Dialogo'" class="dialogo-group">
+                <div class="character">
+                    <input type="text" [(ngModel)]="item.character" placeholder="Personaje" [value]="item.character">
+                </div>
+                <div *ngIf="item.hasOwnProperty('notation')" class="notation">
+                    <p>(</p>
+                    <input type="text" [(ngModel)]="item.notation" placeholder="Notacion" [value]="item.notation">
+                    <p>)</p>
+                </div>
+                <div class="texto">
+                    <textarea type="text" [(ngModel)]="item.content" placeholder="dialogo del personaje" (input)="autoGrow($event)">{{ item.content }}</textarea>
+                </div>
+            </div>
+
+            <input *ngSwitchCase="'Posicion'" type="text"  [(ngModel)]="item.content" [value]="item.content" >
+            <input *ngSwitchCase="'Posicion'" type="text"  [(ngModel)]="item.character" [value]="item.character" >
+
+            <input *ngSwitchCase="'Pose'" type="text"  [(ngModel)]="item.content" [value]="item.content" >
+            <input *ngSwitchCase="'Pose'" type="text"  [(ngModel)]="item.character" [value]="item.character" >
+        </ng-container>
+        
+    </div>
 </div>
