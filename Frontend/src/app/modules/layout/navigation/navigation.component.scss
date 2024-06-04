@@ -14,7 +14,6 @@
   box-shadow: 10px 0 5px -5px rgba(0, 0, 0.5, 0.0);
 }
 
-
 .nav-container {
   width: 100%;
   display: flex;
@@ -49,12 +48,11 @@
   width: 80px;
   position: fixed;
   left: 0;
-  top: 60px; /* Continúa alineado con la parte inferior del navbar */
-  height: calc(100vh - 0px); /* Ajusta la altura para llenar el viewport restante */
+  top: 60px; 
+  height: calc(100vh - 0px); 
   background-color: #161b22;
   box-shadow: 10px 0 5px -5px rgba(0, 0, 0, 0.1);
 }
-
 
 .nav-container i {
   margin-left: 2.5%;
@@ -65,18 +63,13 @@
 .icons {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding-top: 20px;
+  align-items: center;
   width: 100%;
-  padding-left: 30px; 
-  
 }
 
 .icons .options{
   margin-top: 20px;
   margin-bottom: 20px; 
-  cursor: pointer;
-  
 }
 
 .class-icon {
@@ -84,23 +77,41 @@
   justify-content: center;
   align-items: center;
   background-color: #c9d1d9;
-  border-radius: 50%;  /* Esto crea un círculo */
+  border-radius: 50%; 
   color: #161b22;
-  width: 30px;  /* Define el ancho del círculo */
-  height: 30px;  /* Define la altura del círculo */
-  padding-bottom: 3px; /* Ajusta según sea necesario para centrar verticalmente */
+  width: 30px; 
+  height: 30px; 
+  padding-bottom: 3px;
   margin-bottom: 20px;
 }
 
-.sidebar {
-  //transition: width 0.3s ease; /* Suaviza la transición del ancho */
+.defaultp {
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  align-items: center;
 }
 
 .icon-container {
   display: flex;
+  width: 100%;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  cursor: pointer;
   align-items: center;
-  margin-top: 8px;
-  margin-bottom: 8px; /* Espacio entre iconos */
+}
+
+.icon-container:hover {
+  background-color: #0d1117;
 }
 
 .option {
@@ -113,20 +124,55 @@
 }
 
 .sidebar.expanded .icon-title {
-  display: block; /* Muestra el título cuando la barra está expandida */
+  display: block; 
 }
 
 .overlay-sidebar {
   position: fixed;
   left: 0;
-  top: 60px; /* Alineada con el final del navbar */
-  width: 150px; /* Ancho de la barra expandida */
-  height: calc(100vh - 60px); /* Altura total menos el navbar */
-  background-color: #161b22; /* Un color de fondo distinto para diferenciar */
-  z-index: 1100; /* Z-index mayor que la barra lateral original */
-  //display: none; /* Oculto por duseEffect */
+  top: 60px;
+  width: 150px;
+  height: calc(100vh - 60px); 
+  background-color: #161b22; 
+  z-index: 1100;
 }
 
 .overlay-sidebar.expanded {
-  display: block; /* Muestra la barra cuando está expandida */
+  display: block;
 }
+
+.pointer {
+  display: flex;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.pointer:hover{
+  border-radius: 10px;
+  background-color: #0d1117;
+}
+
+.default {
+  cursor: default;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.principal {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.principal:hover{
+  display: flex;
+  background-color: #0d1117;
+  justify-content: center;
+  border-radius: 10px;
+}
+

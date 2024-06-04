@@ -1,38 +1,74 @@
 <div class="guiones-content">
-    <div *ngFor="let item of textos">
+    <div *ngFor="let item of textos; let i = index">
         <!--
         <p>{{ item.order }} - {{ item.title }}</p>
         -->
 
         <ng-container [ngSwitch]="item.title">
             <div class="escena-group">
-                <input class="escena-espacio"  *ngSwitchCase="'Escena'" placeholder="EXT/INT" [(ngModel)]="item.espacio" value="item.espacio">
-                <input class="escena-ubicacion" *ngSwitchCase="'Escena'" placeholder="UBICACION"  [(ngModel)]="item.ubicacion" value="item.ubicacion">
-                <input class="escena-momento" *ngSwitchCase="'Escena'" placeholder="MOMENTO DEL DIA" [(ngModel)]="item.momento" value="item.momento">
+                <input class="escena-espacio"  *ngSwitchCase="'Escena'" placeholder="EXT./INT." [(ngModel)]="item.espacio" value="item.espacio" autofocus (focus)="updateFocusedIndex(i)" (keyup)="borrado($event, i)">
+                <input class="escena-ubicacion" *ngSwitchCase="'Escena'" placeholder="UBICACION"  [(ngModel)]="item.ubicacion" value="item.ubicacion" (focus)="updateFocusedIndex(i)" (keyup)="borrado($event, i)">
+                <input class="escena-momento" *ngSwitchCase="'Escena'" placeholder="MOMENTO DEL DIA" [(ngModel)]="item.momento" value="item.momento" (focus)="updateFocusedIndex(i)" (keyup)="borrado($event, i)">
 
             </div>
 
-            <input *ngSwitchCase="'Accion'" type="text"  [(ngModel)]="item.content" [value]="item.content" >
+            <textarea class="accion" *ngSwitchCase="'Accion'" type="text"  [(ngModel)]="item.content" placeholder="Escribe una accion" [value]="item.content" (input)="autoGrow($event)" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event, i)"></textarea>
+            
 
             <div *ngSwitchCase="'Dialogo'" class="dialogo-group">
                 <div class="character">
-                    <input type="text" [(ngModel)]="item.character" placeholder="Personaje" [value]="item.character">
+                    <input class="characterinp" type="text" [(ngModel)]="item.character" placeholder="Personaje" [value]="item.character" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event, i)">
                 </div>
                 <div *ngIf="item.hasOwnProperty('notation')" class="notation">
                     <p>(</p>
-                    <input type="text" [(ngModel)]="item.notation" placeholder="Notacion" [value]="item.notation">
+                    <input type="text" [(ngModel)]="item.notation" placeholder="Notacion" [value]="item.notation" (input)="adjustWidth($event)" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event, i)">
                     <p>)</p>
                 </div>
                 <div class="texto">
-                    <textarea type="text" [(ngModel)]="item.content" placeholder="dialogo del personaje" (input)="autoGrow($event)">{{ item.content }}</textarea>
+                    <textarea type="text" [(ngModel)]="item.content" placeholder="Escribe un dialogo para tu personaje" (input)="autoGrow($event)" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event, i)">{{ item.content }}</textarea>
                 </div>
             </div>
+<!--
+            <div>
+            <div *ngSwitchCase="'Posicion'" [ngClass]="{'class1': textos[i-1].title === 'Posicion', 'posicion-group': textos[i-1].title !== 'Posicion'}"  (keyup)="borrado($event)>
+                <input type="text" placeholder="Personaje" class="characterpos"  [(ngModel)]="item.character" [value]="item.character" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                
+                <div class="contenido">
+                    <p>x: </p>
+                    <input type="text" placeholder="coordenada x" [(ngModel)]="item.x" [value]="item.x" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+                <div class="contenido">
+                    <p>y: </p>
+                    <input type="text" placeholder="coordenada y" [(ngModel)]="item.y" [value]="item.y" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+                <div class="contenido">
+                    <p>z: </p>
+                    <input type="text" placeholder="coordenada z" [(ngModel)]="item.z" [value]="item.z" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+                <div class="contenido">
+                    <p>rotacion x: </p>
+                    <input type="text" placeholder="rotacion x" [(ngModel)]="item.rotacion_x" [value]="item.rotacion_x" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+                <div class="contenido">
+                    <p>rotacion y: </p>
+                    <input type="text" placeholder="rotacion y" [(ngModel)]="item.rotacion_y" [value]="item.rotacion_y" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+                <div class="contenido">
+                    <p>rotacion z: </p>
+                    <input type="text" placeholder="rotacion z" [(ngModel)]="item.rotacion_z" [value]="item.rotacion_z" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+                <div *ngIf="item.hasOwnProperty('pose')" class="contenido">
+                    <p>pose: </p>
+                    <input type="text" [(ngModel)]="item.pose" placeholder="Pose del personaje" [value]="item.pose" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event)>
+                </div>
+            </div>
+            </div>
+    -->
 
-            <input *ngSwitchCase="'Posicion'" type="text"  [(ngModel)]="item.content" [value]="item.content" >
-            <input *ngSwitchCase="'Posicion'" type="text"  [(ngModel)]="item.character" [value]="item.character" >
+            <div *ngSwitchCase="'Transicion'" class="transicion-group">
+                <input type="text" [(ngModel)]="item.transicion" placeholder="transicion" [value]="item.transicion" (focus)="updateFocusedIndex(i)"  (keyup)="borrado($event, i)">
+            </div>
 
-            <input *ngSwitchCase="'Pose'" type="text"  [(ngModel)]="item.content" [value]="item.content" >
-            <input *ngSwitchCase="'Pose'" type="text"  [(ngModel)]="item.character" [value]="item.character" >
         </ng-container>
         
     </div>

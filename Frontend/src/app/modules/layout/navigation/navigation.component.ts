@@ -16,6 +16,7 @@ import { CommunicationService } from '../../../core/services/comunicacion/comunn
 export class NavigationComponent implements OnInit {
   showSidebar: boolean = false;
   expand: boolean = false;
+  element: string = "escena"
 
   opcion1=true
   opcion2=false
@@ -31,7 +32,14 @@ export class NavigationComponent implements OnInit {
   }
 
   sendSignal(message: string) {
-    this.communicationService.triggerTextbox(message);
+    if (message === "Pose" || message === "Notacion") {
+      if ((message === "Notacion" && this.element === "Dialogo") || (message === "Pose" && this.element === "Posicion")) {
+        this.communicationService.triggerTextbox(message);
+        this.element = message;
+      }
+    }else {
+      this.communicationService.triggerTextbox(message);
+    } 
   }
 
   
@@ -44,6 +52,11 @@ export class NavigationComponent implements OnInit {
     ).subscribe(() => {
       this.checkRoute(); 
     });
+
+    this.communicationService.focusedTextbox$.subscribe(element => {
+      this.element = element;
+    })
+
   }
 
   toggleSidebar() {

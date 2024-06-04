@@ -19,6 +19,7 @@
 
 
 .escena-group {
+    margin-top: 10px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -28,11 +29,14 @@
 .escena-group input {
     text-align: center;
     text-transform: uppercase;
-    background-color: #c9d1d9;
-    color: #151618;
+    background-color: #0d1117;
+    color: #c9d1d9;
     border: none;
     outline: none;
     font-weight: bold;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .escena-ubicacion {
@@ -50,10 +54,9 @@
 
 .dialogo-group {
     display: flex; 
-    gap: 10px; 
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .texto {
@@ -61,6 +64,7 @@
 }
 
 .texto textarea {
+    margin-top: 10px;
     width: 100%;
     border: none;
     outline: none;
@@ -76,6 +80,7 @@
 .notation p {
     margin: 0;
     padding: 0;
+    color: #151618
 }
 
 .notation input {
@@ -90,13 +95,65 @@
     width: 60%;
 }
 
-.character input {
+.characterinp {
     width: 100%;
     text-transform: uppercase;
     border: none;
     outline: none;
     text-align: center;
+    font-size: 16px;
 }
 
+.characterpos {
+    width: 100%;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
 
+.accion {
+    width: 100%;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+}
 
+/*
+.posicion-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+*/
+
+.contenido {
+    display: flex;
+    align-items: center;
+}
+
+.contenido p {
+    color: #151618;
+    margin: 0;
+}
+
+.contenido input {
+    padding-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.transicion-group {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.transicion-group input {
+    width: 80%;
+    border: none;
+    outline: none;
+    text-align: end;
+    text-transform: uppercase;
+}

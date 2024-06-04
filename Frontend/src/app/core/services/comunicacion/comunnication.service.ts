@@ -5,14 +5,21 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CommunicationService {
-  // el todo lo que emite el observable lo escuchan los subscriptores
+
   private triggerTextboxSource = new Subject<string>();
+  private focusedElement = new Subject<string>();
 
   triggerTextbox$ = this.triggerTextboxSource.asObservable();
+
+  focusedTextbox$ = this.focusedElement.asObservable();
 
   //recibe el mensaje y con .next lo lleva al observable
   triggerTextbox(message: string) {
     this.triggerTextboxSource.next(message);
+  }
+
+  focusElement(element: string) {
+    this.focusedElement.next(element)
   }
 
 }
