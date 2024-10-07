@@ -1,130 +1,118 @@
-  import { Component, OnInit } from '@angular/core';
-  import { PageComponent } from '../../../shared/components/page/page.component';
-  import { IEscena, IOrderItem, IPosicionOrderItem } from './order.metadata';
+import { Component, OnInit } from '@angular/core';
+import { PageComponent } from '../../../shared/components/page/page.component';
+import { IEscena, IOrderItem } from './order.metadata';
+import { CommonModule } from '@angular/common';
+import { CommunicationService } from '../../../core/services/comunicacion/comunnication.service'; 
 
+@Component({
+  selector: 'app-guion',
+  standalone: true,
+  imports: [PageComponent, CommonModule],
+  templateUrl: './guion.component.html',
+  styleUrls: ['./guion.component.scss']
+})
+export class GuionComponent implements OnInit {
 
-  @Component({
-    selector: 'app-guion',
-    standalone: true,
-    imports: [PageComponent],
-    templateUrl: './guion.component.html',
-    styleUrls: ['./guion.component.scss']
-  })
-  export class GuionComponent implements OnInit{
+  constructor(private comunicationService: CommunicationService) {}
 
-    constructor() {
-      if (this.orderItems.length === 0 ) {
-        this.addOrderItem("Escena")
-      }
+  orderItems: any[] = [];
+  paginas: any[][] = [[]];
+  escena = 1;
+  focus: number | null = null;
+  maxItemsPerPage = 7;
+
+  ngOnInit() {
+    if (this.orderItems.length === 0) {
+      this.addOrderItem('Escena');
     }
-
-    orderItems: any[] = [];
-    order = 1
-    escena = 1
-    focus : null | number = null
-
-    ngOnInit() {
-    }
-
-    addOrderItem(message: string) {
-      let newItem: IOrderItem | IEscena | IPosicionOrderItem | null = null;
-
-      if (["Dialogo", "Transicion"].includes(message)) {
-        newItem = { content:"", order:this.order, title:message, character: ""} as IOrderItem;
-      }
-
-      else if (message === "Notacion"){
-        if (this.orderItems.length > 0) {
-          console.log(this.orderItems[this.focus!].title)
-          if (this.orderItems[this.focus!].title === "Dialogo"){
-            const item = this.orderItems[this.focus!]
-            if (!item.hasOwnProperty('notation')) {
-              item.notation = "";
-            }
-          }
-          /*
-          const index = this.orderItems.length - 1;
-          const item = this.orderItems[index];
-          if (!item.hasOwnProperty('notation')) {
-            item.notation = "";
-          }
-          */
-        }
-      }
-      /*
-      else if (message === "Pose"){
-        if (this.orderItems.length > 0) {
-          const index = this.orderItems.length - 1;
-          const item = this.orderItems[index];
-          if (!item.hasOwnProperty('pose')) {
-            item.pose = "";
-          }
-        }
-      }
-      */
-
-      else if (message === "Escena") {
-        newItem = { title:message, espacio:"", ubicacion:"", momento:"", order:this.order } as IEscena;
-        this.escena += 1
-        this.order = 1
-      }
-
-      /*
-      else if (message === "Posicion"){
-        newItem = { 
-          x:undefined , 
-          y:undefined, 
-          z:undefined, 
-          rotacion_x:undefined, 
-          rotacion_y:undefined, 
-          rotacion_z:undefined,  
-          order:this.order, 
-          title:message, 
-          character: ""
-        }
-        //this.order = 1
-      }
-      */
-
-      else {
-        newItem= { content:"", order:this.order, title:message} as IOrderItem;
-      }
-
-      console.log(newItem)
-      if(this.orderItems.length === 0){
-        this.orderItems.push(newItem)
-      }else {
-        if ( message !== "Notacion" && message !== "Pose"){
-          const index = this.focus! + 1
-          this.orderItems.splice(index, 0, newItem)
-          for(let i = index + 1; i < this.orderItems.length; i++ ) {
-            this.orderItems[i].order++;
-          }
-        }
-      }
-
-      this.order += 1;
-      console.log(this.orderItems);
-      console.log("el focus es", this.focus)
-
-    }
-
-
-
-    nuevofocus(event:{focus: number | null, message:string}) {
-      this.focus = event.focus
-      this.addOrderItem(event.message);
-    }
-
-    
-    eliminar(index: number) {
-      this.orderItems.splice(index, 1)
-      this.order = this.order - 1
-      for(let i = index; i < this.orderItems.length; i++ ) {
-        this.orderItems[i].order--;
-      }
-    }
-
+  
+    this.comunicationService.triggerTextbox$.subscribe(message => {
+      this.focus! += 1;
+      this.addOrderItem(message);
+    })
   }
 
+  addOrderItem(message: string) {
+    let newItem: IOrderItem | IEscena | null = null;
 
+    if (message === 'Dialogo') {
+      newItem = { content: '', title: message, character: '' } as IOrderItem;
+    } else if (message === 'Notacion' && this.orderItems.length > 0) {
+      const focusedItem = this.orderItems[this.focus!];
+      if (focusedItem?.title === 'Dialogo' && !focusedItem.notation) {
+        focusedItem.notation = '';
+      }
+    } else if (message === 'Escena') {
+      newItem = { title: message, espacio: '', ubicacion: '', momento: '' } as IEscena;
+      this.escena += 1;
+    } else {
+      newItem = { content: '', title: message } as IOrderItem;
+    }
+
+    if (newItem) {
+      this.addItemToPage(newItem);
+    }
+
+    if (this.orderItems.length === 0) {
+      this.orderItems.push(newItem);
+    } else if (message !== 'Notacion') {
+      const index = this.focus! + 1;
+      this.orderItems.splice(index, 0, newItem);
+    }
+
+    console.log(this.orderItems);
+    console.log(this.paginas);
+  }
+
+  addItemToPage(item: any) {
+    const lastPage = this.paginas[this.paginas.length - 1]; // Última página actual
+
+    if (lastPage.length < this.maxItemsPerPage) {
+      lastPage.push(item); // Si la página tiene menos de 7 elementos, agregamos
+    } else {
+      this.paginas.push([item]); // Si ya tiene 7 elementos, creamos una nueva página
+    }
+  }
+
+  nuevofocus(event: { focus: number | null, message: string }) {
+    this.focus = event.focus;
+    this.addOrderItem(event.message);
+  }
+
+  eliminar(event: { index: number, property?: string }) {
+    const item = this.orderItems[event.index];
+    
+    // Eliminar el item de orderItems
+    this.orderItems.splice(event.index, 1);
+
+    // Eliminar de las páginas
+    this.eliminarDePaginas(item);
+  }
+
+  eliminarDePaginas(item: any) {
+    for (let i = 0; i < this.paginas.length; i++) {
+      const pagina = this.paginas[i];
+      const indexInPage = pagina.indexOf(item);
+
+      if (indexInPage !== -1) {
+        // Eliminar el elemento de la página
+        pagina.splice(indexInPage, 1);
+
+        // Reajustar las páginas si es necesario
+        if (pagina.length < this.maxItemsPerPage && this.paginas[i + 1]) {
+          const nextPage = this.paginas[i + 1];
+          const firstItemOfNextPage = nextPage.shift();
+
+          if (firstItemOfNextPage) {
+            pagina.push(firstItemOfNextPage); 
+          }
+
+          if (nextPage.length === 0) {
+            this.paginas.splice(i + 1, 1); 
+          }
+        }
+        break;
+      }
+    }
+  }
+}

@@ -1,3 +1,14 @@
+<!--<div class="guiones-content">
+    <app-page [textos]="orderItems" (eliminar)="eliminar($event)"  (focus)="nuevofocus({ focus: $event.index, message: $event.message })"></app-page>
+</div>-->
 <div class="guiones-content">
-    <app-page [textos]="orderItems" (eliminar)="eliminar($event)" (focus)="nuevofocus({ focus: $event.index, message: $event.message })"></app-page>
-</div>
+    <ng-container *ngFor="let pagina of paginas; let i = index">
+      <app-page 
+        [textos]="pagina" 
+        [pageNumber]="i + 1"
+        (eliminar)="eliminar($event)"  
+        (focus)="nuevofocus({ focus: $event.index, message: $event.message })">
+      </app-page>
+    </ng-container>
+  </div>
+  

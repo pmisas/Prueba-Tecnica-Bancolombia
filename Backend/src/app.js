@@ -1,5 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
+
+// Intenta cargar el archivo .env
+const result = dotenv.config();
+
+if (result.error) {
+  console.log('Error cargando el archivo .env:', result.error);
+} else {
+  console.log('Archivo .env cargado correctamente');
+}
 const cors = require('cors');
 
 const authRoutes = require('./routes/auth/userRoutes');
@@ -11,18 +20,19 @@ const { authenticateToken } = require('./Config/middleware/autheticate');
 const logOperation = require('./Config/middleware/audit');
 
 dotenv.config();
+
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-
 console.log('DB_NAME:', process.env.DB_NAME);
 console.log('DB_USER:', process.env.DB_USER);
 console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 console.log('DB_HOST:', process.env.DB_HOST);
 console.log('DB_PORT:', process.env.DB_PORT);
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 sequelize.sync()
     .then(() => console.log('Database synced'))

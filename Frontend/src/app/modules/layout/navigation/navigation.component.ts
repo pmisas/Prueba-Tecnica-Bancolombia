@@ -31,15 +31,20 @@ export class NavigationComponent implements OnInit {
     const localStorage = this.document.defaultView?.localStorage;
   }
 
+  get imageDialogoUrl(): string {
+    return this.element === 'Dialogo' ? 'assets/images/parentesis.png' : 'assets/images/parentesis2.png';
+  }
+  
+
   sendSignal(message: string) {
-    if (message === "Pose" || message === "Notacion") {
-      if ((message === "Notacion" && this.element === "Dialogo") || (message === "Pose" && this.element === "Posicion")) {
+    if (message === "Notacion") {
+      if (message === "Notacion" && this.element === "Dialogo") {
         this.communicationService.triggerTextbox(message);
         this.element = message;
       }
     }else {
       this.communicationService.triggerTextbox(message);
-    } 
+    }
   }
 
   
@@ -53,6 +58,7 @@ export class NavigationComponent implements OnInit {
       this.checkRoute(); 
     });
 
+    
     this.communicationService.focusedTextbox$.subscribe(element => {
       this.element = element;
     })

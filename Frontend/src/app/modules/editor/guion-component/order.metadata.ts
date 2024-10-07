@@ -1,22 +1,8 @@
-export interface IOrderItem { // Define aquí si no está importada
-  order: number;
+export interface IOrderItem {
   title: string;
   content: string;
   character?: string;
   notation?: string;
-}
-
-export interface IPosicionOrderItem { // Define aquí si no está importada
-  order: number;
-  title: string;
-  x?: number;
-  y?: number;
-  z?: number;
-  rotacion_x?: number;
-  rotacion_y?: number;
-  rotacion_z?: number;
-  pose?:string;
-  character?: string;
 }
 
 export interface IEscena {
@@ -24,6 +10,5 @@ export interface IEscena {
   espacio: string;
   ubicacion: string;
   momento: string;
-  order: number;
 }
 
